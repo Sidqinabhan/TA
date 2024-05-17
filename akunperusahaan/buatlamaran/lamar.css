@@ -1,0 +1,83 @@
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+#jobtitle {
+  width: 95%;
+  margin-right: 5px; /* Memberikan sedikit jarak antara input dan tombol */
+}
+
+textarea {
+  width: 97.5%;
+  height: 80px;
+  resize: none;
+}
+
+input[type="text"] {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.workplace-type {
+  display: flex;
+  align-items: center;
+  margin-bottom: 510;
+}
+
+.workplace-type input[type="radio"] {
+  margin-right: 10px;
+}
+
+p {
+  text-align: center;
+}
+
+select {
+  width: 98.5%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group.hidden {
+  display: none;
+}
+
+.form-group.inline {
+  display: inline-block;
+  width: calc(50% - 12px);
+  margin-right: 10px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

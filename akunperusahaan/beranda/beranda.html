@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Beranda - Karir dan Profesi</title>
+    <link rel="icon" type="image/x-icon" href="htdocs/KP/image" />
+    <!-- Tambahan Link Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+
+      .navbar {
+        background-color: #666; /* Warna kelabu */
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Menambahkan wrap untuk tata letak fleksibel */
+        position: sticky; /* Buat navbar tetap di posisi saat di-scroll */
+        top: 0; /* Atur navbar di bagian atas */
+        z-index: 1000; /* Atur z-index agar navbar tetap di atas konten */
+      }
+
+      .navbar-title {
+        font-size: 24px;
+        flex: 1; /* Membuat judul navbar fleksibel */
+        margin-right: 10px; /* Memberi jarak kanan untuk mode handphone */
+      }
+
+      .menu {
+        flex: 1; /* Membuat menu fleksibel */
+        display: flex;
+        justify-content: flex-end; /* Menggeser menu ke sisi kanan */
+      }
+
+      .menu-item {
+        margin: 0 10px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .menu-item:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column; /* Membuat layout menjadi kolom */
+        margin: 0 auto; /* Mengubah margin atas dan bawah menjadi 0 */
+        padding-top: 50px; /* Mengurangi padding top */
+      }
+      .content-container {
+        padding: 0 10px;
+      }
+
+      .recommendations-container {
+        padding: 0 10px;
+      }
+
+      .post-container {
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%; /* Atur lebar post container agar mengisi lebar maksimum yang tersedia */
+        max-width: 600px; /* Batasi lebar maksimum post container */
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .user-info {
+        flex-grow: 1;
+        margin-right: 10px; /* Menambahkan jarak antara nama dan username */
+      }
+
+      .username {
+        font-size: 14px; /* Menyesuaikan ukuran username */
+        font-style: italic; /* Membuat username menjadi miring */
+      }
+
+      .post-menu {
+        cursor: pointer;
+      }
+
+      .post-footer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .profile-picture {
+        width: 40px; /* Sesuaikan ukuran foto profil */
+        height: 40px;
+        border-radius: 50%; /* Bulatkan foto profil */
+        margin-right: 10px; /* Beri jarak antara foto profil dan info pengguna */
+      }
+
+      .footer-menu {
+        background-color: #666; /* Warna kelabu */
+        color: #fff;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+      }
+
+      .footer-menu a {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column; /* Mengatur tata letak menjadi kolom */
+        align-items: center; /* Menggeser ikon dan teks ke tengah */
+      }
+
+      .footer-menu a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-menu .icon {
+        margin-bottom: 5px; /* Memberi jarak antara ikon dan teks */
+        font-size: 20px; /* Atur ukuran ikon */
+      }
+
+      .post {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #fff;
+      }
+
+      .menu-icon {
+        margin-right: 5px;
+      }
+
+      /* Media queries untuk tata letak responsif */
+      @media only screen and (min-width: 600px) {
+        .container {
+          flex-direction: row; /* Mengembalikan layout menjadi baris */
+          max-width: 1000px;
+          margin: 20px auto;
+        }
+
+        .content-container {
+          flex: 3;
+        }
+
+        .recommendations-container {
+          flex: 1;
+        }
+
+        .menu {
+          flex: auto; /* Menggunakan sebagian ruang yang tersedia */
+          justify-content: flex-end; /* Menggeser menu ke sisi kanan */
+        }
+
+        textarea {
+          width: 100%; /* Lebar textarea mengisi kontainer */
+        }
+      }
+
+      /* Mengubah lebar bawah navbar */
+      @media only screen and (max-width: 600px) {
+        .navbar {
+          flex-direction: column; /* Mengubah tata letak menjadi kolom */
+        }
+
+        .navbar-title {
+          margin: 0; /* Menghapus margin */
+          flex: 1; /* Membuat judul navbar fleksibel */
+        }
+
+        .menu {
+          flex: auto; /* Menggunakan sebagian ruang yang tersedia */
+          justify-content: flex-start; /* Menggeser menu ke sisi kiri */
+        }
+
+        .menu-item {
+          margin: 5px 10px; /* Mengurangi margin */
+        }
+
+        textarea {
+          width: calc(
+            100% - 20px
+          ); /* Lebar textarea mengisi kontainer dengan padding */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-title">
+        <h1>Karir dan Profesi</h1>
+      </div>
+      <div class="menu">
+        <a
+          href="http://localhost/KP/akunperusahaan/info/info.html"
+          class="menu-item"
+          ><i class="far fa-briefcase icon"></i> Info</a
+        >
+        <a href="/agung/template_ig/index.html" class="menu-item">
+          <i classs="fa fa-inbox icon"></i> Pesan</a
+        >
+        <a href="http://localhost/KP/Login/Login.html" class="menu-item">
+          <i class="fas fa-sign-out-alt icon"></i>Logout</a
+        >
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-container">
+        <div class="post">
+          <h2>Buat Postingan</h2>
+          <form action="#" method="POST">
+            <textarea
+              name="post-content"
+              rows="4"
+              cols="50"
+              style="resize: none"
+            ></textarea>
+            <br />
+            <input
+              type="file"
+              name="files[]"
+              multiple
+              accept="image/, video/"
+            />
+            <br />
+            <input type="submit" value="Post" />
+          </form>
+        </div>
+        <div class="post">
+          <h2>Postingan Teman</h2>
+          <div class="friend-post">
+            <div class="post-container">
+              <div class="post-header">
+                <img
+                  src="insert-profile-photo-url.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture"
+                />
+                <div class="user-info">
+                  <p>Nama: Nama Pengguna</p>
+                  <p class="username">@username</p>
+                  <!-- Tambahkan class "username" untuk gaya teks -->
+                </div>
+                <div class="post-menu">&#8942;</div>
+              </div>
+              <img src="insert-photo-url.jpg" alt="Postingan Pengguna" />
+              <div class="post-footer">
+                <div class="action-buttons">
+                  <button>Like</button>
+                  <button>Komentar</button>
+                  <button>Bagikan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="friend-post">
+            <div class="post-container">
+              <div class="post-header">
+                <img
+                  src="insert-profile-photo-url.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture"
+                />
+                <div class="user-info">
+                  <p>Nama: Nama Pengguna</p>
+                  <p class="username">@username</p>
+                  <!-- Tambahkan class "username" untuk gaya teks -->
+                </div>
+                <div class="post-menu">&#8942;</div>
+              </div>
+              <img src="insert-photo-url.jpg" alt="Postingan Pengguna" />
+              <div class="post-footer">
+                <div class="action-buttons">
+                  <button>Like</button>
+                  <button>Komentar</button>
+                  <button>Bagikan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="friend-post">
+            <div class="post-container">
+              <div class="post-header">
+                <img
+                  src="insert-profile-photo-url.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture"
+                />
+                <div class="user-info">
+                  <p>Nama: Nama Pengguna</p>
+                  <p class="username">@username</p>
+                  <!-- Tambahkan class "username" untuk gaya teks -->
+                </div>
+                <div class="post-menu">&#8942;</div>
+              </div>
+              <img src="insert-photo-url.jpg" alt="Postingan Pengguna" />
+              <div class="post-footer">
+                <div class="action-buttons">
+                  <button>Like</button>
+                  <button>Komentar</button>
+                  <button>Bagikan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="friend-post">
+            <div class="post-container">
+              <div class="post-header">
+                <img
+                  src="insert-profile-photo-url.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture"
+                />
+                <div class="user-info">
+                  <p>Nama: Nama Pengguna</p>
+                  <p class="username">@username</p>
+                  <!-- Tambahkan class "username" untuk gaya teks -->
+                </div>
+                <div class="post-menu">&#8942;</div>
+              </div>
+              <img src="insert-photo-url.jpg" alt="Postingan Pengguna" />
+              <div class="post-footer">
+                <div class="action-buttons">
+                  <button>Like</button>
+                  <button>Komentar</button>
+                  <button>Bagikan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="friend-post">
+            <div class="post-container">
+              <div class="post-header">
+                <img
+                  src="insert-profile-photo-url.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture"
+                />
+                <div class="user-info">
+                  <p>Nama: Nama Pengguna</p>
+                  <p class="username">@username</p>
+                  <!-- Tambahkan class "username" untuk gaya teks -->
+                </div>
+                <div class="post-menu">&#8942;</div>
+              </div>
+              <img src="insert-photo-url.jpg" alt="Postingan Pengguna" />
+              <div class="post-footer">
+                <div class="action-buttons">
+                  <button>Like</button>
+                  <button>Komentar</button>
+                  <button>Bagikan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="friend-post">
+            <div class="post-container">
+              <div class="post-header">
+                <img
+                  src="insert-profile-photo-url.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture"
+                />
+                <div class="user-info">
+                  <p>Nama: Nama Pengguna</p>
+                  <p class="username">@username</p>
+                  <!-- Tambahkan class "username" untuk gaya teks -->
+                </div>
+                <div class="post-menu">&#8942;</div>
+              </div>
+              <img src="insert-photo-url.jpg" alt="Postingan Pengguna" />
+              <div class="post-footer">
+                <div class="action-buttons">
+                  <button>Like</button>
+                  <button>Komentar</button>
+                  <button>Bagikan</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="recommendations-container">
+        <div class="recommendations">
+          <h2>Rekomendasi Pekerja</h2>
+          <p>Orang 1</p>
+          <p>Orang 2</p>
+          <p>Orang 3</p>
+        </div>
+        <div class="recommendations">
+          <h2>Rekomendasi Orang</h2>
+          <p>Orang 1</p>
+          <p>Orang 2</p>
+          <p>Orang 3</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-menu">
+      <a href="http://localhost/KP/akunperusahaan/beranda/beranda.html"
+        ><i class="fas fa-home icon"></i> <span>Beranda</span></a
+      >
+      <a href="http://localhost/KP/akunperusahaan/perusahaan/perusahaan.html"
+        ><i class="fa fa-briefcase icon"></i> <span>Perusahaan</span></a
+      >
+      <a href="http://localhost/KP/akunperusahaan/forum/forumorang.html"
+        ><i class="far fa-comments icon"></i> <span>Forum</span></a
+      >
+      <a href="http://localhost/KP/akunperusahaan/profile/profile.html"
+        ><i class="far fa-user-circle icon"></i> <span>Profile</span></a
+      >
+    </div>
+  </body>
+</html>

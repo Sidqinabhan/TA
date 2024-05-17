@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Listings</title>
+<style>
+    /* CSS styling */
+    .job-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .job-card {
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .job-card h3 {
+        margin-top: 0;
+    }
+    .apply-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Job Listings</h2>
+
+<div class="job-grid" id="jobGrid">
+    <!-- Job cards will be filled by JavaScript -->
+</div>
+
+<script>
+    // JavaScript to fetch data from PHP and populate the grid
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('lowongan.php') // Assuming your PHP script to fetch data is named lowongan.php
+            .then(response => response.json())
+            .then(data => {
+                const jobGrid = document.getElementById('jobGrid');
+                data.forEach(job => {
+                    const jobCard = document.createElement('div');
+                    jobCard.classList.add('job-card');
+                    jobCard.innerHTML = `
+                        <h3>${job.jobtitle}</h3>
+                        <p><strong>Location:</strong> ${job.location}</p>
+                        <p><strong>Workplace:</strong> ${job.workplace}</p>
+                        <p><strong>Employment:</strong> ${job.employment}</p>
+                        <p><strong>Salary:</strong> ${job.salary}</p>
+                        <p><strong>Description:</strong> ${job.description}</p>
+                        <p><strong>Skill Required:</strong> ${job.skill_required}</p>
+                        <button class="apply-button" onclick="apply('${job.jobtitle}')">Apply</button>
+                    `;
+                    jobGrid.appendChild(jobCard);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+
+    // JavaScript function to handle apply button click
+    function apply(jobTitle) {
+        alert("Applied for job: " + jobTitle);
+        // You can add further logic here, like sending an AJAX request to apply for the job
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Pengguna</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: -60px; /* Anda bisa sesuaikan angka ini sesuai dengan kebutuhan */
+      }
+
+      .profile-info {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .profile-info table {
+        width: 100%;
+      }
+
+      .profile-info table td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd; /* Add border-bottom to each td */
+      }
+
+      .profile-info table .icon {
+        margin-right: 5px;
+      }
+
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: block;
+        background-image: url("poto.jpg");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Added style for greeting */
+      #greeting {
+        float: left;
+        font-style: italic;
+        margin-top: -10px;
+      }
+
+      /* Added style for decoration */
+      .decoration {
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      /* Style for decoration text */
+      .decoration p {
+        font-style: italic;
+        color: #666;
+      }
+
+      /* Style for followers section */
+      .followers {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* Style for settings button */
+      .icon-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .icon-btn i {
+        color: #333;
+        font-size: 20px;
+      }
+
+      .icon-btn:focus {
+        outline: none;
+      }
+
+      .icon-btn:hover i {
+        color: #555;
+      }
+
+      /* Style for portfolio container */
+      .portfolio-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        align-items: center; /* Menengahkan secara vertikal */
+        flex-wrap: wrap; /* Jika portofolio lebih dari satu baris */
+      }
+
+      /* Menambahkan padding agar tombol tidak terlalu dekat dengan portofolio */
+      #tampilkanBtn {
+        margin: 0 auto 20px;
+        background-color: #4d4a4a;
+        color: white; /* Ubah warna teks menjadi putih */
+        padding: 10px 20px; /* Berikan sedikit padding agar tombol terlihat lebih besar */
+        border: none; /* Hilangkan border agar terlihat lebih bersih */
+        border-radius: 5px; /* Tambahkan border-radius untuk membuat tombol sedikit membulat */
+        cursor: pointer;
+        transition: background-color 0.3s; /* Efek transisi saat dihover */
+      }
+
+      #tampilkanBtn:hover {
+        background-color: #333; /* Ubah warna tombol saat dihover */
+      }
+
+      /* Style for portfolio box */
+      .portfolio-box {
+        width: 30%; /* Adjust the width as needed */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+
+      /* Style for portfolio caption */
+      .portfolio-caption {
+        margin-top: 10px;
+      }
+      .footer-menu {
+        background-color: #666; /* Warna kelabu */
+        color: #fff;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+      }
+
+      .footer-menu a {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column; /* Mengatur tata letak menjadi kolom */
+        align-items: center; /* Menggeser ikon dan teks ke tengah */
+      }
+
+      .footer-menu a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-menu .icon {
+        margin-bottom: 5px; /* Memberi jarak antara ikon dan teks */
+        font-size: 20px; /* Atur ukuran ikon */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="greeting">Selamat Malam</div>
+      <div class="profile-picture"></div>
+      <div class="followers">
+        <span>Pengikut: 0</span>
+        <!-- Example number of followers -->
+        <button id="settings-btn" class="icon-btn">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+      <h2>Profil Pengguna: <span id="username">IT Company</span></h2>
+      <div class="profile-info">
+        <div class="decoration">
+          <table>
+            <div class="profile-info">
+              <div class="decoration">
+                <table>
+                  <tr>
+                    <td><i class="fas fa-map-marker-alt icon"></i>Alamat :</td>
+                    <td>asd</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-cogs icon"></i>Deskripsi:</td>
+                    <td>asd</td>
+                  </tr>
+                </table>
+                <br />
+                </div>
+              </div>
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer-menu">
+      <a href="http://localhost/KP/akunperusahaan/beranda/beranda.html"
+        ><i class="fas fa-home icon"></i> <span>Beranda</span></a
+      >
+      <a href="http://localhost/KP/akunperusahaan/perusahaan/perusahaan.html"
+        ><i class="fa fa-briefcase icon"></i> <span>Perusahaan</span></a
+      >
+      <a href="http://localhost/KP/akunperusahaan/forum/forumorang.html"
+        ><i class="far fa-comments icon"></i> <span>Forum</span></a
+      >
+      <a href="http://localhost/KP/akunperusahaan/profile/profile.html"
+        ><i class="far fa-user-circle icon"></i> <span>Profile</span></a
+      >
+    </div>
+    <script>
+      // JavaScript code to display dynamic greetings
+      function displayGreeting() {
+        var greetingDiv = document.getElementById("greeting");
+        var now = new Date();
+        var hour = now.getHours();
+
+        if (hour < 12) {
+          greetingDiv.innerHTML = "Selamat Pagi";
+        } else if (hour < 18) {
+          greetingDiv.innerHTML = "Selamat Siang";
+        } else {
+          greetingDiv.innerHTML = "Selamat Malam";
+        }
+      }
+
+      // Call the function when the page loads
+      displayGreeting();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lowongan Pekerjaan - Developer Web</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="lamar.css" />
+  </head>
+  <body>
+    <a href="http://localhost/KP/akunperusahaan/perusahaan/perusahaan.html">
+      <i class="fa fa-chevron-left fa-2x"></i>
+    </a>
+    <div class="container">
+      <form action="lamaran.php" method="post">
+        <!---Belum Masuk Database-->
+        <label for="jobtitle">Job Title *</label>
+        <input type="text" id="jobtitle" name="jobtitle" required />
+
+        <label for="location">Employee Location *</label>
+        <input type="text" id="location" name="location" required />
+
+        <div class="form-group">
+          <label for="workplace">Workplace Type *</label>
+          <select id="workplace" name="workplace">
+            <option>Choose One</option>
+            <option>On-Site</option>
+            <option>Hybrid</option>
+            <option>Remote</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="employment">Employment Type *</label>
+          <select id="employment" name="employment">
+            <option>Choose One</option>
+            <option>Full Time</option>
+            <option>Part Time</option>
+            <option>Internship</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="salary">Salary *</label>
+          <select id="salary" name="salary">
+            <option>Choose One</option>
+            <option>Rp 1.000.000 - 5.000.000</option>
+            <option>Rp 2.000.000 - 6.000.000</option>
+            <option>Rp 3.000.000 - 7.000.000</option>
+            <option>Rp 4.000.000 - 8.000.000</option>
+            <option>Rp 5.000.000 - 9.000.000</option>
+          </select>
+        </div>
+
+        <label for="description">Description *</label>
+        <textarea
+          id="description"
+          rows="5"
+          cols="40"
+          name="description"
+          required
+        ></textarea>
+
+        <label for="skill_required">Skill Required *</label>
+        <input type="text" id="skill_required" name="skill_required" required />
+
+        <br /><br />
+        <input type="submit" value="Posting" class="btn" />
+      </form>
+    </div>
+  </body>
+</html>
